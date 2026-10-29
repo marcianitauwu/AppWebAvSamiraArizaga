@@ -1,0 +1,16 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/SlnAppPoliMusic/WebAppPoliMusicV2/bin
+/SlnAppPoliMusic/WebAppPoliMusicV2/obj/Debug
+/WebAppPoliMusicV2/obj/Debug
+/.vs
+/webapppolimusicv1_asp
+.vs
+.workbuddy-ai
+_capturas
+bin
+obj
+*.csproj.user
+/packages
