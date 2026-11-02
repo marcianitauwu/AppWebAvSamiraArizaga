@@ -21,7 +21,7 @@ namespace WebAppPoliMusicV2.BLL
         }
 
         /// <summary>
-        /// Returns every song of the library.
+        /// Returns every song of the library.a
         /// </summary>
         public DataTable Read()
         {

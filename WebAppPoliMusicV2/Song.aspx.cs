@@ -44,6 +44,43 @@ namespace WebAppPoliMusicV2
             }
 
             RenderUserChrome(user);
+            RenderNavigation();
+        }
+
+        /// <summary>
+        /// Indica si la pagina se abrio con el filtro "Mas escuchadas"
+        /// (Song.aspx?view=top). Por defecto se muestra todo el catalogo.
+        /// </summary>
+        private bool IsTopView
+        {
+            get
+            {
+                return string.Equals(Request.QueryString["view"], "top",
+                    StringComparison.OrdinalIgnoreCase);
+            }
+        }
+
+        /// <summary>
+        /// Marca el elemento activo de la barra lateral y ajusta el titulo del
+        /// panel, de modo que cada enlace del menu lleve a una vista distinta.
+        /// </summary>
+        private void RenderNavigation()
+        {
+            navSongs.Attributes["class"] = IsTopView ? "pm-nav-item" : "pm-nav-item is-active";
+            navTop.Attributes["class"] = IsTopView ? "pm-nav-item is-active" : "pm-nav-item";
+
+            if (IsTopView)
+            {
+                navTop.Attributes["aria-current"] = "page";
+                navSongs.Attributes.Remove("aria-current");
+            }
+            else
+            {
+                navSongs.Attributes["aria-current"] = "page";
+                navTop.Attributes.Remove("aria-current");
+            }
+
+            litPanelTitle.Text = IsTopView ? "Más escuchadas" : "Canciones";
         }
 
         /// <summary>
@@ -80,6 +117,15 @@ namespace WebAppPoliMusicV2
                 {
                     dtView = bll.Search(filter);
                     DecorateForView(dtView);
+                }
+
+                // "Mas escuchadas" reutiliza la misma consulta y ordena en memoria
+                // por numero de reproducciones: no hace falta otra sentencia SQL.
+                if (IsTopView && dtView.Rows.Count > 1)
+                {
+                    DataView dv = new DataView(dtView);
+                    dv.Sort = "PLAYS DESC, SONG_NAME ASC";
+                    dtView = dv.ToTable();
                 }
 
                 gvSongs.DataSource = dtView;

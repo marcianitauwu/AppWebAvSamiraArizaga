@@ -33,7 +33,7 @@ namespace WebAppPoliMusicV2
 
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
-                lblMessage.Text = "Please, write a login/password.";
+                lblMessage.Text = "Por favor, escribe un usuario y una contraseña.";
                 return;
             }
             password = Util.Hash.GeneratePasswordHash(password);
@@ -48,27 +48,24 @@ namespace WebAppPoliMusicV2
                 user.Email = dtUser.Rows[0]["EMAIL"].ToString();
                 user.Birthday = dtUser.Rows[0]["BIRTHDAY"].ToString();
                 user.UserType = Convert.ToInt32(dtUser.Rows[0]["USER_TYPE"]);
-                if (user.UserType == Util.Constants.ID_USER_NORMAL)
+                if (user.UserType == Util.Constants.ID_USER_NORMAL ||
+                    user.UserType == Util.Constants.ID_USER_ADMIN)
                 {
                     Session[Util.Constants.USER] = user;
+                    // Ambos perfiles entran a la biblioteca musical. Este laboratorio
+                    // no incluye una pantalla de administracion, por lo que no se
+                    // redirige a DesktopAdmin.aspx (esa pagina no existe y daba 404).
                     FormsAuthentication.RedirectFromLoginPage(login, true);
-                    //Response.Redirect("~/Default.aspx", true);
-                }
-                else if (user.UserType == Util.Constants.ID_USER_ADMIN)
-                {
-                    Session[Util.Constants.USER] = user;
-                    FormsAuthentication.RedirectFromLoginPage(login, true);
-                    Response.Redirect("~/DesktopAdmin.aspx?uid=" + user.ID, true);
                 }
                 else
                 {
-                    lblMessage.Text = "Login/password incorrect, try again.";
+                    lblMessage.Text = "Usuario o contraseña incorrectos, inténtalo de nuevo.";
                     return;
                 }
             }
             else
             {
-                lblMessage.Text = "Login/password incorrect, try again.";
+                lblMessage.Text = "Usuario o contraseña incorrectos, inténtalo de nuevo.";
                 return;
             }
             //#endif
@@ -77,7 +74,8 @@ namespace WebAppPoliMusicV2
 
         protected void LinkButtonNewUser_Click(object sender, EventArgs e)
         {
-            Response.Redirect("SignUp.aspx", true);
+            // El archivo del proyecto se llama SignUP.aspx.
+            Response.Redirect("~/SignUP.aspx", true);
         }
     }
 

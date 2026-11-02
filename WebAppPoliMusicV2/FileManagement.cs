@@ -22,23 +22,23 @@ namespace WebAppPoliMusicV2
                 string dataRequired = string.Empty;
                 if (!fileUpload.HasFile)
                 {
-                    return "Image is required!!";
+                    return "La imagen es obligatoria.";
                 }
                 if (!(fileUpload.PostedFile.ContentType == "image/jpeg" ||
                     fileUpload.PostedFile.ContentType == "image/jpg" ||
                     fileUpload.PostedFile.ContentType == "image/png")
                     )
                 {
-                    return "Upload status: Only JPEG or PNG files are accepted!";
+                    return "Solo se aceptan archivos JPEG o PNG.";
                 }
                 string fileExt = Path.GetExtension(fileUpload.FileName).ToLower();
                 if (!(fileExt == ".jpg" || fileExt == ".jpeg" || fileExt == ".png"))
                 {
-                    return "Upload status: Only JPEG or PNG files are accepted!";
+                    return "Solo se aceptan archivos JPEG o PNG.";
                 }
                 if (fileUpload.PostedFile.ContentLength > 10485760) //10MB=10485760Bytes
                 {
-                    return "Upload status: The file has to be less than 10 MB!";
+                    return "El archivo debe pesar menos de 10 MB.";
                 }
                 string strServerFolder = Server.MapPath(strFolder);
                 string strFileName;
@@ -63,7 +63,7 @@ namespace WebAppPoliMusicV2
             }
             catch (Exception ex)
             {
-                return "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
+                return "No se pudo subir el archivo: " + ex.Message;
             }
         }
         public string SaveDefaultImageOnServer(string strFolder, string newFileName)
@@ -83,7 +83,7 @@ namespace WebAppPoliMusicV2
             }
             catch (Exception ex)
             {
-                return "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
+                return "No se pudo subir el archivo: " + ex.Message;
             }
         }
         public string SaveSongOnServer(FileUpload fileUpload, string strFolder, string newFileName)
@@ -93,25 +93,25 @@ namespace WebAppPoliMusicV2
                 string dataRequired = string.Empty;
                 if (!fileUpload.HasFile)
                 {
-                    return "Select a song file first!!";
+                    return "Primero selecciona un archivo de canción.";
                 }
                 if (!(fileUpload.PostedFile.ContentType == "audio/mpeg" ||
                     fileUpload.PostedFile.ContentType == "audio/mpeg3" ||
                     fileUpload.PostedFile.ContentType == "audio/mp3")
                     )
                 {
-                    return "Upload status: The selected file must be a MP3 format!";
+                    return "El archivo debe estar en formato MP3.";
                 }
                 string strFileNameExtension = Path.GetExtension(fileUpload.FileName).ToLower();
                 if (strFileNameExtension != ".mp3")
                 {
-                    return "Only .mp3 extensions are allowed to upload!!.";
+                    return "Solo se permite subir archivos con extensión .mp3.";
                 }
                 string strmaxFileSize = System.Configuration.ConfigurationManager.AppSettings["maxSongLength"];
                 int maxFileSize = string.IsNullOrEmpty(strmaxFileSize) ? 1024 : Convert.ToInt32(strmaxFileSize);//10485760
                 if (fileUpload.PostedFile.ContentLength > maxFileSize)
                 {
-                    return "File size of the mp3 file is too large. Maximum file size permitted is " + maxFileSize / 1024 + "KB";
+                    return "El archivo MP3 es demasiado grande. El tamaño máximo permitido es " + maxFileSize / 1024 + " KB.";
                 }
                 string strFileName;
                 if (newFileName != string.Empty)
@@ -136,7 +136,7 @@ namespace WebAppPoliMusicV2
             }
             catch (Exception ex)
             {
-                return "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
+                return "No se pudo subir el archivo: " + ex.Message;
             }
         }
     }

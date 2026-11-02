@@ -24,6 +24,33 @@ namespace WebAppPoliMusicV2
         protected global::System.Web.UI.HtmlControls.HtmlForm formSong;
 
         /// <summary>
+        /// Control navSongs.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navSongs;
+
+        /// <summary>
+        /// Control navTop.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor navTop;
+
+        /// <summary>
+        /// Control litPanelTitle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litPanelTitle;
+
+        /// <summary>
         /// Control litAvatarSide.
         /// </summary>
         /// <remarks>

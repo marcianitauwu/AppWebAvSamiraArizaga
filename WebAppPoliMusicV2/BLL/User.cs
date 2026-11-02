@@ -47,12 +47,12 @@ namespace WebAppPoliMusicV2.BLL
             int returnValue = CheckExistUser(user.UserName);
             if (returnValue != 0)
             {
-                return "Username already registered!";
+                return "Ese nombre de usuario ya está registrado.";
             }
             returnValue = CheckExistEmail(user.Email);
             if (returnValue != 0)
             {
-                return "Email already used!.";
+                return "Ese correo electrónico ya está en uso.";
             }
             return string.Empty;
         }

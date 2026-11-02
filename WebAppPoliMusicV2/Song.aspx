@@ -36,17 +36,7 @@
                     <span>Inicio</span>
                 </a>
 
-                <a class="pm-nav-item is-active" href="Song.aspx" aria-current="page" title="Biblioteca musical">
-                    <svg class="pm-ico" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M4 19V7.5L13 5v11"></path>
-                        <circle cx="6.5" cy="19" r="2.5"></circle>
-                        <circle cx="15.5" cy="16" r="2.5"></circle>
-                        <path d="M19 14V4"></path>
-                    </svg>
-                    <span>Biblioteca musical</span>
-                </a>
-
-                <a class="pm-nav-item" href="Song.aspx" title="Canciones">
+                <a id="navSongs" runat="server" class="pm-nav-item" href="Song.aspx" title="Todas las canciones">
                     <svg class="pm-ico" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path d="M8 6h13"></path>
                         <path d="M8 12h13"></path>
@@ -56,6 +46,16 @@
                         <path d="M3.5 18h.01"></path>
                     </svg>
                     <span>Canciones</span>
+                </a>
+
+                <a id="navTop" runat="server" class="pm-nav-item" href="Song.aspx?view=top" title="Canciones más escuchadas">
+                    <svg class="pm-ico" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M4 19V7.5L13 5v11"></path>
+                        <circle cx="6.5" cy="19" r="2.5"></circle>
+                        <circle cx="15.5" cy="16" r="2.5"></circle>
+                        <path d="M19 14V4"></path>
+                    </svg>
+                    <span>Más escuchadas</span>
                 </a>
             </nav>
 
@@ -138,7 +138,7 @@
 
             <section class="pm-panel">
                 <div class="pm-panel-head">
-                    <h2 class="pm-panel-title">Canciones</h2>
+                    <h2 class="pm-panel-title"><asp:Literal ID="litPanelTitle" runat="server" Text="Canciones" /></h2>
                     <span class="pm-panel-info">
                         <asp:Literal ID="litResultInfo" runat="server" /></span>
                 </div>
