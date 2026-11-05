@@ -1,22 +1,2 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WebAppPoliMusicV3.Login" %>
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <h2>Login</h2>
-    <form id="formLogin" runat="server">
-        <asp:TextBox ID="txtLogin" runat="server" placeholder="Username"></asp:TextBox>
-        <br />
-        <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
-        <br />
-        <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="BtnLogin_Click" />
-        &nbsp;
-        <asp:LinkButton ID="LinkButtonNewUser" runat="server" OnClick="LinkButtonNewUser_Click">Enroll new user</asp:LinkButton>
-        <br />
-        <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label>
-</form>
-</body>
-</html>
+<!DOCTYPE html><html lang="es"><head runat="server"><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Iniciar sesión · PoliMusic</title><link href="Content/auth.css" rel="stylesheet" /></head><body><main class="auth-card"><span class="brand">POLIMUSIC · SAMIRA.ARIZAGA</span><h1>Qué gusto tenerte aquí</h1><p>Inicia sesión y vuelve a tu música.</p><form id="formLogin" runat="server"><asp:Label runat="server" AssociatedControlID="txtLogin" Text="Usuario" /><asp:TextBox ID="txtLogin" runat="server" MaxLength="50" autocomplete="username" /><asp:Label runat="server" AssociatedControlID="txtPassword" Text="Contraseña" /><asp:TextBox ID="txtPassword" runat="server" TextMode="Password" autocomplete="current-password" /><asp:Button ID="btnLogin" runat="server" Text="Iniciar sesión" OnClick="BtnLogin_Click" /><asp:LinkButton ID="LinkButtonNewUser" runat="server" OnClick="LinkButtonNewUser_Click">Crear una cuenta</asp:LinkButton><asp:Label ID="lblMessage" runat="server" CssClass="message" role="status" /></form></main></body></html>

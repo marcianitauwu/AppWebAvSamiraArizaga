@@ -100,6 +100,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Song.aspx" />
+    <Content Include="SongFiles\bensound-tomorrow.mp3" />
+    <Content Include="SongFiles\bensound-scifi.mp3" />
+    <Content Include="SongFiles\bensound-energy.mp3" />
+    <Content Include="SongFiles\bensound-adventure.mp3" />
+    <Content Include="Content\library.css" />
+    <Content Include="Content\auth.css" />
+    <Content Include="Scripts\library.js" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -196,6 +204,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Song.aspx.cs"><DependentUpon>Song.aspx</DependentUpon><SubType>ASPXCodeBehind</SubType></Compile>
+    <Compile Include="Song.aspx.designer.cs"><DependentUpon>Song.aspx</DependentUpon></Compile>
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

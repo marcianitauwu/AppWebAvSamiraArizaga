@@ -52,7 +52,7 @@ namespace WebAppPoliMusicV3
                     strFileName = Path.GetFileNameWithoutExtension(fileUpload.FileName);
                 }
                 string strFileNameExtension = Path.GetExtension(fileUpload.FileName).ToLower();
-                string newServerFileNameWithExtension = strServerFolder + strFileName + strFileNameExtension;
+                string newServerFileNameWithExtension = Path.Combine(strServerFolder, strFileName + strFileNameExtension);
 
                 // Create the directory if it does not exist.
                 if (!Directory.Exists(strServerFolder))
@@ -73,9 +73,10 @@ namespace WebAppPoliMusicV3
             {
                 string strServerFolder = Server.MapPath(strFolder);
                 string strFileName = "default.jpg";
-                string serverFileNameWithExtension = strServerFolder + strFileName;
-                string servernewFileNameWithExtension = strServerFolder + newFileName + ".jpg";
+                string serverFileNameWithExtension = Path.Combine(strServerFolder, strFileName);
+                string servernewFileNameWithExtension = Path.Combine(strServerFolder, newFileName + ".jpg");
                 // Create the directory if it does not exist.
+                if (!File.Exists(serverFileNameWithExtension)) return "No se encuentra la imagen predeterminada.";
                 if (Directory.Exists(strServerFolder))
                 {
                     File.Copy(serverFileNameWithExtension, servernewFileNameWithExtension, true);
@@ -125,7 +126,7 @@ namespace WebAppPoliMusicV3
                 }
 
                 string strServerFolder = Server.MapPath(strFolder);
-                string newServerFileNameWithExtension = strServerFolder + strFileName + strFileNameExtension;
+                string newServerFileNameWithExtension = Path.Combine(strServerFolder, strFileName + strFileNameExtension);
 
                 // Create the directory if it does not exist.
                 if (!Directory.Exists(strServerFolder))
